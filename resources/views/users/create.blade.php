@@ -29,6 +29,20 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
+                                    <label for="address" class="form-label">Alamat</label>
+                                    <input type="text" class="form-control" id="address" name="address">
+                                    @error('address')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Telepon</label>
+                                    <input type="text" class="form-control" id="phone" name="phone">
+                                    @error('phone')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email">
                                     @error('email')

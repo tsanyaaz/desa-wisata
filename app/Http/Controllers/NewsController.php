@@ -31,14 +31,38 @@ class NewsController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'news_title' => 'required',
-            'news_content' => 'required',
-            'news_date' => 'required',
-            'news_image' => 'nullable',
-            'id_news_category' => 'required'
-        ]);
-        News::create($request->all());
+        $news = News::create($request->all());;
+        if ($request->hasFile('news_image')) {
+            $request->file('news_image')->move('news_images/', $request->file('news_image')->getClientOriginalName());
+            $news->news_image = $request->file('news_image')->getClientOriginalName();
+            $news->save();
+        }
+        // $request->validate([
+        //     'news_title' => 'required',
+        //     'news_content' => 'required',
+        //     'news_date' => 'required',
+        //     'news_image' => 'required|image|file|max:2048',
+        //     'id_news_category' => 'required'
+        // ]);
+        // $array = $request->only([
+        //     'news_title',
+        //     'news_content',
+        //     'news_date',
+        //     'id_news_category'
+        // ]);
+        // $array['news_image'] = $request->file('news_image')->store('news_images');
+        // $add = News::create($array);
+        // if ($add) $request->file('news_image')->store('news_images'); {
+        //     return redirect('/news')->with('success', 'Data berhasil ditambahkan!');
+        // }
+        // $this->validate($request, [
+        //     'news_title' => 'required',
+        //     'news_content' => 'required',
+        //     'news_date' => 'required',
+        //     'news_image' => 'required|image|file|max:2048',
+        //     'id_news_category' => 'required'
+        // ]);
+        // News::create($request->all());
         return redirect('/news')->with('success', 'Data berhasil ditambahkan!');
     }
 

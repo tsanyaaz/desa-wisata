@@ -75,9 +75,15 @@
                                         <td>{{ $touristAttraction->ta_desc }}</td>
                                         <td>{{ $touristAttraction->ta_facilities }}</td>
                                         <td>
-                                            @foreach ($touristAttraction->pictures as $picture)
-                                                <img src="{{ asset('uploads/' . $picture->file_name) }}" alt="{{ $picture->file_name }}" width="100px">
-                                            @endforeach
+                                            <img src="{{ asset('tourAttractionPicts/') . $touristAttraction->picture->first()->file_name }}" alt="{{ $touristAttraction->ta_name }}">
+                                            {{-- @if (!empty($touristAttractions))
+                                                @foreach ($touristAttraction->pictures as $picture)
+                                                    <img src="{{ asset('pictures/'.$picture->file_name) }}" alt="{{ $picture->file_name }}" width="200px">
+                                                @endforeach
+                                            @else
+                                                -
+                                                {{-- <img src="{{ asset('news_images/default.png') }}" alt="{{ $data->news_title }}" class="img-fluid" style="width: 200px"> --}}
+                                            {{-- @endif --}} 
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group">

@@ -9,8 +9,15 @@ class TouristAttraction extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    // protected $guarded = [];
 
+    protected $fillable = [
+        'ta_name',
+        'ta_desc',
+        'ta_facilities',
+        'id_tourism_category',
+        'id_picture'
+    ];
     public function tourismCategory()
     {
         return $this->belongsTo(TourismCategory::class, 'id_tourism_category');
@@ -18,6 +25,6 @@ class TouristAttraction extends Model
 
     public function picture()
     {
-        return $this->belongsTo(Picture::class);
+        return $this->hasMany(Picture::class, 'id_picture');
     }
 }

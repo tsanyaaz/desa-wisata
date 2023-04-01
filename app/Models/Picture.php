@@ -10,7 +10,7 @@ class Picture extends Model
     use HasFactory;
 
     protected $fillable = [
-        'file_name',
+        'file_name'
     ];
 
     public function homestays()
@@ -20,11 +20,11 @@ class Picture extends Model
 
     public function touristAttractions()
     {
-        return $this->hasMany(TouristAttraction::class);
+        return $this->belongsTo(TouristAttraction::class, 'id_picture');
     }
 
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
+    // public function users()
+    // {
+    //     return $this->hasMany(User::class);
+    // }
 }

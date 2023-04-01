@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
             $table->enum('level', ['Administrator', 'Bendahara', 'Pelanggan', 'Pemilik'])->default('Pelanggan');
+            $table->text('address')->nullable();
+            $table->string('phone', 15)->nullable();
             $table->tinyInteger('aktif')->default(1);
             $table->rememberToken();
             $table->timestamps();

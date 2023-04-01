@@ -59,6 +59,7 @@
                                     <tr class="text-center">
                                         {{-- <th style="width: 10px">#</th> --}}
                                         <th>Nama</th>
+                                        {{-- <th>Email</th> --}}
                                         <th>Alamat</th>
                                         <th>Telepon</th>
                                         <th>Jabatan</th>
@@ -71,10 +72,9 @@
                                             <tr>
                                                 {{-- <td>{{ $number + $employees->firstItem() }}</td> --}}
                                                 <td>{{ $employee->name }}</td>
-                                                <td>{{ $employee->email }}</td>
-                                                {{-- <td>{{ $employee->aktif == 1 ? 'Aktif' : 'Nonaktif' }}</td> --}}
-                                                <td>{{ $employee->created_at }}</td>
-                                                {{-- <td>{{ $employee->updated_at }}</td> --}}
+                                                {{-- <td>{{ $employee->email }}</td> --}}
+                                                <td>{{ $employee->address }}</td>
+                                                <td>{{ $employee->phone }}</td>
                                                 <td>{{ $employee->level }}</td>
                                                 <td class="text-center">
                                                     <div class="btn-group">
@@ -85,21 +85,6 @@
                                             </tr>
                                         @endif
                                     @endforeach
-                                    {{-- @foreach ($employees as $number => $employee)
-                                    <tr>
-                                        <td>{{ $number + $employees->firstItem() }}</td>
-                                        <td>{{ $employee->user->name }}</td>
-                                        <td>{{ $employee->address }}</td>
-                                        <td>{{ $employee->phone }}</td>
-                                        <td>{{ $employee->jobtitle }}</td>
-                                        <td class="text-center">
-                                            <div class="btn-group">
-                                                <a href="/employees/edit/{{ $employee->id }}" class="btn btn-primary me-1"><i class="fas fa-edit"></i></a>
-                                                <button type="button" class="btn btn-danger delete ms-1" data-id="{{ $employee->id }}"><i class="fas fa-trash"></i></button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach --}}
                                 </tbody>
                             </table>
                             {{ $employees->links() }}

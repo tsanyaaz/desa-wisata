@@ -13,12 +13,12 @@ class EmployeeSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('employees')->insert([
-            'name' => 'Tsany',
-            'address' => 'Jl. Jalan',
-            'phone' => '081234567890',
-            'jobtitle' => 'Administrator',
-            // 'id_user' => 1,
-        ]);
+        // DB::table('employees')->insert([
+        //     'name' => 'Tsany',
+        //     'address' => 'Jl. Jalan',
+        //     'phone' => '081234567890',
+        //     'jobtitle' => 'Administrator',
+        //     // 'id_user' => 1,
+        // ]);
     }
 }

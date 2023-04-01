@@ -36,6 +36,8 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
             'level' => 'required|in:Administrator,Bendahara,Pemilik',
+            'address' => 'nullable',
+            'phone' => 'nullable',
         ]);
 
         $users = User::create([
@@ -43,6 +45,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'level' => $request->level,
+            'address' => $request->address,
+            'phone' => $request->phone,
         ]);
 
         return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');

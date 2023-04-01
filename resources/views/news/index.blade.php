@@ -76,7 +76,10 @@
                                         <td>{{ $data->news_date }}</td>
                                         <td>
                                             @if ($data->news_image)
-                                                <img src="{{ asset('storage/'.$data->news_image) }}" alt="{{ $data->news_title }}" class="img-fluid">
+                                                <img src="{{ asset('news_images/'.$data->news_image) }}" alt="{{ $data->news_title }}" class="img-fluid" style="width: 200px">
+                                            @else
+                                                -
+                                                {{-- <img src="{{ asset('news_images/default.png') }}" alt="{{ $data->news_title }}" class="img-fluid" style="width: 200px"> --}}
                                             @endif
                                         </td>
                                         <td class="text-center">

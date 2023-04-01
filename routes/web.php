@@ -89,7 +89,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //-----Employees
 // Index
-Route::get('/employees', [EmployeeController::class, 'index'])->name('employees')->middleware('auth');
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index')->middleware('auth');
 
 // Create
 Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create')->middleware('auth');

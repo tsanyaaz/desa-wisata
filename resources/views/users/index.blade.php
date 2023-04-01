@@ -60,7 +60,7 @@
                                         <th style="width: 10px">#</th>
                                         <th>Nama</th>
                                         <th>Email</th>
-                                        {{-- <th>Level</th> --}}
+                                        <th>Level</th>
                                         <th>Status</th>
                                         <th>Tanggal Dibuat</th>
                                         <th>Tanggal Diupdate</th>
@@ -73,7 +73,7 @@
                                         <td>{{ $number + $users->firstItem() }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
-                                        {{-- <td>{{ $user->level }}</td> --}}
+                                        <td>{{ $user->level }}</td>
                                         <td>{{ $user->aktif == 1 ? 'Aktif' : 'Nonaktif' }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>{{ $user->updated_at }}</td>

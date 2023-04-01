@@ -57,7 +57,7 @@
                             <table class="table table-bordered mb-3">
                                 <thead>
                                     <tr class="text-center">
-                                        <th style="width: 10px">#</th>
+                                        {{-- <th style="width: 10px">#</th> --}}
                                         <th>Nama</th>
                                         <th>Alamat</th>
                                         <th>Telepon</th>
@@ -67,6 +67,25 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($employees as $number => $employee)
+                                        @if($employee->level == 'Administrator' || $employee->level == 'Bendahara' || $employee->level == 'Pemilik')       
+                                            <tr>
+                                                {{-- <td>{{ $number + $employees->firstItem() }}</td> --}}
+                                                <td>{{ $employee->name }}</td>
+                                                <td>{{ $employee->email }}</td>
+                                                {{-- <td>{{ $employee->aktif == 1 ? 'Aktif' : 'Nonaktif' }}</td> --}}
+                                                <td>{{ $employee->created_at }}</td>
+                                                {{-- <td>{{ $employee->updated_at }}</td> --}}
+                                                <td>{{ $employee->level }}</td>
+                                                <td class="text-center">
+                                                    <div class="btn-group">
+                                                        <a href="/employees/edit/{{ $employee->id }}" class="btn btn-primary me-1"><i class="fas fa-edit"></i></a>
+                                                        <button type="button" class="btn btn-danger delete ms-1" data-id="{{ $employee->id }}"><i class="fas fa-trash"></i></button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                    {{-- @foreach ($employees as $number => $employee)
                                     <tr>
                                         <td>{{ $number + $employees->firstItem() }}</td>
                                         <td>{{ $employee->user->name }}</td>
@@ -80,7 +99,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                             {{ $employees->links() }}

@@ -21,6 +21,47 @@
                         <div class="card-body">
                             <form action="{{ route('employees.store') }}" method="POST">
                                 @csrf
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input type="text" class="form-control" id="name" name="name">
+                                    @error('name')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email">
+                                    @error('email')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password">
+                                    @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                    @error('password_confirmation')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="level" class="form-label">Level</label>
+                                    <select class="form-control" id="level" name="level">
+                                        <option value="Administrator">Administrator</option>
+                                        <option value="Bendahara">Bendahara</option>
+                                        {{-- <option value="Pelanggan">Pelanggan</option> --}}
+                                        <option value="Pemilik">Pemilik</option>
+                                    </select>
+                                    @error('level')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                 {{-- <div class="mb-3">
                                     <label for="name" class="form-label">Nama</label>
                                     <select class="form-control" id="name" name="name" onchange="setJabatan()">
@@ -35,7 +76,7 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div> --}}
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label for="id_user" class="form-label">Nama</label>
                                     <select class="form-control" id="id_user" name="id_user" onchange="setJabatan()">
                                         @foreach($users as $user)
@@ -73,7 +114,7 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button> --}}
                             </form>
                         </div>
                         <!-- /.card-body -->
@@ -85,7 +126,7 @@
     </div>
 @endsection
 
-<script>
+{{-- <script>
     function setJabatan() {
         var selectedId = document.getElementById("id_user").value;
         var users = {!! json_encode($users) !!};
@@ -106,4 +147,4 @@
     }
 
     
-</script>
+</script> --}}

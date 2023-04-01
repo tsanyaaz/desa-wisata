@@ -47,6 +47,23 @@
                             <form action="{{ route('employees.update', $employees->id) }}" method="POST">
                                 @csrf
                                 <div class="mb-3">
+                                    <label for="name" class="form-label">Nama</label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $employees->name) }}" required autocomplete="name" autofocus>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $employees->email) }}" required autocomplete="email">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="level" class="form-label">Level</label>
+                                    <select id="level" class="form-control @error('level') is-invalid @enderror" name="level" required>
+                                        <option value="Administrator" @if (old('level', $employees->level) === 'Administrator') selected @endif>Administrator</option>
+                                        <option value="Bendahara" @if (old('level', $employees->level) === 'Bendahara') selected @endif>Bendahara</option>
+                                        <option value="Pemilik" @if (old('level', $employees->level) === 'Pemilik') selected @endif>Pemilik</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                {{-- <div class="mb-3">
                                     <label for="id_user" class="form-label">Nama</label>
                                     <input type="text" class="form-control" value="{{ $employees->user->name }}" disabled>
                                 </div>
@@ -75,7 +92,7 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <button type="submit" class="btn btn-primary mt-3">Submit</button> --}}
                             </form>
                         </div>
                     </div>

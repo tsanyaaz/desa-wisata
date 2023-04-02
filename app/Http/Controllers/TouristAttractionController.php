@@ -30,7 +30,6 @@ class TouristAttractionController extends Controller
     public function create()
     {
         $tourismCategories = TourismCategory::all();
-        // $pictures = Picture::all();
         return view('touristAttractions/create', compact('tourismCategories'));
     }
 
@@ -181,7 +180,9 @@ class TouristAttractionController extends Controller
 
     public function destroy($id)
     {
-        TouristAttraction::find($id)->delete();
+        $touristAttractions = TouristAttraction::find($id);
+        $touristAttractions->pictures()->delete();
+        $touristAttractions->delete();
         if (session('page')) {
             return Redirect::to(session('page'))->with('success', 'Data berhasil dihapus!');
         }

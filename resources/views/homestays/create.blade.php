@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('homestays.store') }}" method="POST">
+                            <form action="{{ route('homestays.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="h_name" class="form-label">Nama Penginapan</label>
@@ -39,6 +39,13 @@
                                     <label for="h_facilities" class="form-label">Fasilitas</label>
                                     <input type="text" class="form-control" id="h_facilities" name="h_facilities">
                                     @error('h_facilities')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="mb-3">
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <input type="file" class="form-control" id="picture" name="picture[]" multiple>
+                                    @error('picture')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>

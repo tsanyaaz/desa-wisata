@@ -6,16 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Homestay;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Picture;
+use Illuminate\Support\Facades\Storage;
 
 class HomestayController extends Controller
 {
     public function index(Request $request)
     {
         if ($request->has('search')) {
-            $homestays = Homestay::where('h_name', 'LIKE', '%' . $request->search . '%')->paginate(5);
+            $homestays = Homestay::where('h_name', 'LIKE', '%' . $request->search . '%')->with('pictures')->paginate(5);
             Session::put('page', request()->fullUrl());
         } else {
-            $homestays = Homestay::paginate(5);
+            $homestays = Homestay::with('pictures')->paginate(5);
             Session::put('page', request()->fullUrl());
         }
         return view('homestays/index', compact('homestays'));
@@ -31,9 +33,23 @@ class HomestayController extends Controller
         $this->validate($request, [
             'h_name' => 'required',
             'h_desc' => 'required',
-            'h_facilities' => 'required'
+            'h_facilities' => 'required',
+            'picture' => 'required|array|min:1',
+            'picture.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        Homestay::create($request->all());
+        $homestays = Homestay::create($request->only('h_name', 'h_desc', 'h_facilities'));
+        $directory = 'homestays/' . $homestays->id;
+        foreach ($request->file('picture') as $picture) {
+            Picture::store($picture, $directory, $homestays, false);
+        }
+
+        $pictures = array();
+        $files = Storage::allFiles(($directory));
+
+        foreach ($files as $file) {
+            $url = Storage::url($file);
+            $pictures[] = $url;
+        }
         return redirect('/homestays')->with('success', 'Data berhasil ditambahkan!');
     }
 

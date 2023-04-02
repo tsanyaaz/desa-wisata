@@ -11,6 +11,7 @@ use App\Http\Controllers\NewsCategoryController;
 use App\Http\Controllers\HomestayController;
 use App\Http\Controllers\TourPackageController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\HomeController;
 use App\Models\Employee;
 
 /*
@@ -32,9 +33,7 @@ Route::group(['middleware' => ['auth', 'role:Administrator,Bendahara,Pemilik']],
     });
 });
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['role:Pelanggan']], function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');

@@ -34,12 +34,6 @@
                     <li class="nav-item">
                         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="/" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item d-none d-sm-inline-block">
-                        <a href="#" class="nav-link">Contact</a>
-                    </li>
                 </ul>
 
                 <!-- Right navbar links -->
@@ -183,6 +177,7 @@
                                 </a>
                             </li>
                             @endif
+                            @if (Auth::user()->level != 'Administrator')
                             <li class="nav-item">
                                 <a href="/reservations" class="nav-link">
                                     <i class="nav-icon fas fa-solid fa-book"></i>
@@ -191,6 +186,7 @@
                                     </p>
                                 </a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a href="/logout" class="nav-link">
                                     <i class="nav-icon fas fas fa-sign-out-alt"></i>
@@ -242,10 +238,10 @@
 
             <!-- Main Footer -->
             <footer class="main-footer">
-                <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+                <strong>Copyright &copy; 2023 <a href="/">Desa Wisata</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                <b>TsanyA</b>
                 </div>
             </footer>
         </div>

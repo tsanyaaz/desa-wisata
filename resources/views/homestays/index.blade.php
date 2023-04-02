@@ -72,7 +72,11 @@
                                         <td>{{ $homestay->h_name }}</td>
                                         <td>{{ $homestay->h_desc }}</td>
                                         <td>{{ $homestay->h_facilities }}</td>
-                                        <td>Kosong</td>
+                                        <td>
+                                            @foreach ($homestay->pictures as $picture)
+                                                <img src="{{ asset($picture->path) }}" alt="{{ $homestay->h_name }}" width="100px">
+                                            @endforeach
+                                        </td>
                                         <td class="text-center">
                                             <div class="btn-group">
                                                 <a href="/homestays/edit/{{ $homestay->id }}" class="btn btn-primary me-1"><i class="fas fa-edit"></i></a>

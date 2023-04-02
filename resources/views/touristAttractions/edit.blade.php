@@ -19,11 +19,11 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/touristAttractions/update/{{ $touristAttractions->id }}" method="POST">
+                            <form action="/touristAttractions/update/{{ $touristAttractions->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="ta_name" class="form-label">Nama</label>
-                                    <input type="text" class="form-control" id="ta_name" name="ta_name" value="{{ $touristAttractions->ta_name }}">
+                                    <input type="text" class="form-control @error('ta_name') is-invalid @enderror" id="ta_name" name="ta_name" value="{{ old('ta_name', $touristAttractions->ta_name) }}" required autocomplete="ta_name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="id_tourism_category" class="form-label">Kategori</label>
@@ -38,13 +38,20 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="ta_desc" class="form-label">Deskripsi</label>
-                                    <input type="text" class="form-control" id="ta_desc" name="ta_desc" value="{{ $touristAttractions->ta_desc }}">
+                                    <input type="text" class="form-control @error('ta_desc') is-invalid @enderror" id="ta_desc" name="ta_desc" value="{{ $touristAttractions->ta_desc }}" required autocomplete="ta_desc">
                                 </div>
                                 <div class="mb-3">
                                     <label for="ta_facilities" class="form-label">Fasilitas</label>
-                                    <input type="text" class="form-control" id="ta_facilities" name="ta_facilities" value="{{ $touristAttractions->ta_facilities }}">
+                                    <input type="text" class="form-control @error('ta_facikities') is-invalid @enderror" id="ta_facilities" name="ta_facilities" value="{{ $touristAttractions->ta_facilities }}" required autocomplete="ta_facilities">
                                 </div>
-                                
+                                <div>
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <br>
+                                    @foreach ($touristAttractions->pictures as $picture)
+                                        <img src="{{ asset($picture->path) }}" alt="{{  $touristAttractions->ta_name }}" width="100">
+                                    @endforeach
+                                    <input type="file" class="form-control @error('picture') is-invalid @enderror" id="picture" name="picture[]" multiple>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>

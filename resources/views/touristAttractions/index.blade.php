@@ -75,7 +75,15 @@
                                         <td>{{ $touristAttraction->ta_desc }}</td>
                                         <td>{{ $touristAttraction->ta_facilities }}</td>
                                         <td>
-                                            <img src="{{ asset('tourAttractionPicts/') . $touristAttraction->picture->first()->file_name }}" alt="{{ $touristAttraction->ta_name }}">
+                                            @foreach ($touristAttraction->pictures as $picture)
+                                                <img src="{{ asset($picture->path) }}" alt="{{  $touristAttraction->ta_name }}" width="100">
+                                            @endforeach
+                                            {{-- <img src="{{ asset('storage/touristAttractions/' . $touristAttraction->id . $touristAttraction->picture) }}" alt="{{ $touristAttraction->ta_name }}" width="100"> --}}
+                                            {{-- <img src="{{ $touristAttraction->picture }}" alt="{{ $touristAttraction->ta_name }}" width="100"> --}}
+                                            {{-- @foreach ($touristAttraction->pictures as $picture)
+                                                <img src="{{ asset($picture->file_name) }}" alt="{{ $$touristAttraction->ta_name }}" width="100">
+                                            @endforeach --}}
+                                            {{-- <img src="{{ asset('tourAttractionPicts/') . $touristAttraction->picture->first()->file_name }}" alt="{{ $touristAttraction->ta_name }}"> --}}
                                             {{-- @if (!empty($touristAttractions))
                                                 @foreach ($touristAttraction->pictures as $picture)
                                                     <img src="{{ asset('pictures/'.$picture->file_name) }}" alt="{{ $picture->file_name }}" width="200px">

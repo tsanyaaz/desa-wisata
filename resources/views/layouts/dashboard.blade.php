@@ -93,51 +93,64 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a href="/users" class="nav-link">
-                                    <i class="nav-icon fas fa-sharp fa-solid fa-users"></i>
-                                    <p>
-                                        Pengguna
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/employees" class="nav-link">
-                                    <i class="nav-icon fas fa-sharp fa-solid fa-user"></i>
-                                    <p>
-                                        Karyawan
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-solid fa-tree"></i>
-                                    <p>
-                                        Wisata
-                                        <i class="right fas fa-angle-left"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="/tourismCategories" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Kategori Wisata</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/touristAttractions" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Objek Wisata</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="/tourPackages" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Paket Wisata</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            @if (Auth::user()->level == 'Administrator')
+                                <li class="nav-item">
+                                    <a href="/users" class="nav-link">
+                                        <i class="nav-icon fas fa-sharp fa-solid fa-users"></i>
+                                        <p>
+                                            Pengguna
+                                        </p>
+                                    </a>
+                                </li>
+                            {{-- @endif --}}
+                            {{-- @if (Auth::user()->role == 'Administrator') --}}
+                                <li class="nav-item">
+                                    <a href="/employees" class="nav-link">
+                                        <i class="nav-icon fas fa-sharp fa-solid fa-user"></i>
+                                        <p>
+                                            Karyawan
+                                        </p>
+                                    </a>
+                                </li>
+                            @endif
+                            @if (Auth::user()->level == 'Administrator' || Auth::user()->level == 'Bendahara')
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="nav-icon fas fa-solid fa-tree"></i>
+                                        <p>
+                                            Wisata
+                                            <i class="right fas fa-angle-left"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview">
+                                        @if (Auth::user()->level == 'Administrator')
+                                        <li class="nav-item">
+                                            <a href="/tourismCategories" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Kategori Wisata</p>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if (Auth::user()->level == 'Administrator')
+                                        <li class="nav-item">
+                                            <a href="/touristAttractions" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Objek Wisata</p>
+                                            </a>
+                                        </li>
+                                        @endif
+                                        @if (Auth::user()->level == 'Bendahara')
+                                        <li class="nav-item">
+                                            <a href="/tourPackages" class="nav-link">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <p>Paket Wisata</p>
+                                            </a>
+                                        </li>
+                                        @endif
+                                    </ul>
+                                </li>
+                            @endif
+                            @if (Auth::user()->level == 'Administrator')
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fas fa-regular fa-newspaper"></i>
@@ -169,6 +182,7 @@
                                     </p>
                                 </a>
                             </li>
+                            @endif
                             <li class="nav-item">
                                 <a href="/reservations" class="nav-link">
                                     <i class="nav-icon fas fa-solid fa-book"></i>

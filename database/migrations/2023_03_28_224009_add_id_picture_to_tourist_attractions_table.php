@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tourist_attractions', function (Blueprint $table) {
-            $table->unsignedBigInteger('id_picture')->nullable();
+        // Schema::table('tourist_attractions', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('id_picture')->nullable();
 
-            $table->foreign('id_picture')->references('id')->on('pictures')->onDelete('cascade');
-        });
+        //     $table->foreign('id_picture')->references('id')->on('pictures')->onDelete('cascade');
+        // });
     }
 
     /**

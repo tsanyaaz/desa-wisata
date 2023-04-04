@@ -55,13 +55,18 @@
                     <div>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="img-circle elevation-2" alt="User Image" style="width: 32px; margin-left: 16px;">
+                                @if (Auth::user()->pictures->count() > 0)
+                                    <img src="{{ asset(Auth::user()->pictures->first()->path) }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
+                                @else
+                                    <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
+                                @endif
                             </a>
                         
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                 <a class="dropdown-item" href="/register">Registrasi</a>
                                 <a class="dropdown-item" href="/login">Login</a>
                                 <a class="dropdown-item" href="/users/profile">Pengaturan</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
                             </div>
                         </div>
                     </div>

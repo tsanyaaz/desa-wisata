@@ -63,7 +63,11 @@
                     <!-- Sidebar user panel (optional) -->
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="img-circle elevation-2" alt="User Image">
+                            @if (Auth::user()->pictures->count() > 0)
+                                <img src="{{ asset(Auth::user()->pictures->first()->path) }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
+                            @else
+                                <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
+                            @endif
                         </div>
                         <div class="info">
                             <a href="/users/profile/" class="d-block" style="text-decoration: none">{{ Auth::user()->name }}</a>

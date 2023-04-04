@@ -37,11 +37,6 @@
                                         </form>
                                     </div>
                                 </div>
-                                {{-- <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <a href="/export" class="btn btn-primary rounded-pill"><i class="fas fa-download"></i> Export PDF</a>
-                                    </div>
-                                </div> --}}
                             </div>
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">

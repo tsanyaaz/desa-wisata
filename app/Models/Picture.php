@@ -46,19 +46,4 @@ class Picture extends Model
         Storage::delete('public/' . $picture->path);
         $picture->delete();
     }
-
-    // public function homestays()
-    // {
-    //     return $this->hasMany(Homestay::class);
-    // }
-
-    // public function touristAttractions()
-    // {
-    //     return $this->belongsTo(TouristAttraction::class);
-    // }
-
-    // public function users()
-    // {
-    //     return $this->hasMany(User::class);
-    // }
 }

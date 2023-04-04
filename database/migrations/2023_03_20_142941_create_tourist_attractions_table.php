@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('ta_name', 255);
             $table->text('ta_desc');
-            // $table->unsignedBigInteger('id_picture')->nullable();
             $table->unsignedBigInteger('id_tourism_category');
             $table->text('ta_facilities');
             $table->timestamps();
 
-            // $table->foreign('id_picture')->references('id')->on('pictures')->onDelete('cascade');
             $table->foreign('id_tourism_category')->references('id')->on('tourism_categories');
         });
     }

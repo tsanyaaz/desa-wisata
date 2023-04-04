@@ -20,28 +20,10 @@
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Daftar Reservasi</h3>
-                            {{-- <div class="card-tools">
-                                <a class="btn btn-success" href="/touristAttractions/create"><i class="fas fa-user-plus"></i> Tambah Objek Wisata</a>
-                                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                    <i class="fas fa-minus"></i>
-                                </button>
-                            </div> --}}
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
-                                {{-- <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <form action="/touristAttractions" method="GET">
-                                            <input type="search" class="form-control search" placeholder="Cari Pengguna" name="search">
-                                        </form>
-                                    </div>
-                                </div> --}}
-                                {{-- <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <a href="/export" class="btn btn-primary"><i class="fas fa-download"></i> Export PDF</a>
-                                    </div>
-                                </div> --}}
                             </div>
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">

@@ -168,31 +168,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#77bfad" fill-opacity="1" d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,133.3C672,128,768,192,864,213.3C960,235,1056,213,1152,197.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             </section>
 
-            {{-- <section id="homestay">
-                <div class="container">
-                    <div class="text-center">
-                        <h2 class="title">Objek Wisata</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro delectus, a obcaecati provident culpa voluptatem error, ipsum aperiam maxime sit molestias, nisi soluta deserunt.</p>
-                    </div>
-                    <div class="row text-center">
-                        @foreach ($homestays as $homestay)
-                            <div class="col-md-4">
-                                <div class="card">
-                                    @if(count($homestay->pictures) > 0)
-                                    <img src="{{ asset($homestay->pictures[0]->path) }}" class="card-img-top" alt="{{ $homestay->h_name }}">
-                                    @endif
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $homestay->h_name }}</h5>
-                                        <p class="card-text">{{ $homestay->h_desc }}</p>
-                                        <a href="/homestays/{{ $homestay->id }}" class="btn btn-primary">Read More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#77bfad" fill-opacity="1" d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,133.3C672,128,768,192,864,213.3C960,235,1056,213,1152,197.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            </section> --}}
+            
             <section id="homestay">
                 <div class="container">
                     <div class="row mb-3 justify-content-center text-center">
@@ -220,51 +196,6 @@
                 </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,133.3C672,128,768,192,864,213.3C960,235,1056,213,1152,197.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
             </section>
-            {{-- <section id="homestay">
-                <div class="container">
-                    <div class="row mb-3 justify-content-center text-center">
-                        <div class="col">
-                            <h2 class="title">Penginapan</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro delectus, a obcaecati provident culpa voluptatem error, ipsum aperiam maxime sit molestias, nisi soluta deserunt.</p>
-                        </div>
-                        <div class="col-12 text-center">
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <div class="card">
-                                        <img src="..." class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card">
-                                        <img src="..." class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="card">
-                                        <img src="..." class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Card title</h5>
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                            <a href="#" class="btn btn-primary">Go somewhere</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,160L48,181.3C96,203,192,245,288,229.3C384,213,480,139,576,133.3C672,128,768,192,864,213.3C960,235,1056,213,1152,197.3C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
-            </section> --}}
 
             <section id="reservation">
                 <div class="container">
@@ -278,8 +209,4 @@
                 </div>
             </section>
             @endsection
-        {{-- </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </body>
-</html> --}}

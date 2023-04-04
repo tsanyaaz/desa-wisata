@@ -76,7 +76,6 @@
                                     <select class="form-control" id="level" name="level">
                                         <option value="Administrator">Administrator</option>
                                         <option value="Bendahara">Bendahara</option>
-                                        {{-- <option value="Pelanggan">Pelanggan</option> --}}
                                         <option value="Pemilik">Pemilik</option>
                                     </select>
                                     @error('level')

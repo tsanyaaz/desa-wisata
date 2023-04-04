@@ -6,12 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\News;
 use App\Models\TouristAttraction;
 use App\Models\Homestay;
-use Illuminate\Support\Str;
 
 
 class HomeController extends Controller
 {
-    //
     public function index(Request $request)
     {
         $news = News::orderBy('news_date', 'desc')->get();

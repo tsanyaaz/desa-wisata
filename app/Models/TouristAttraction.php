@@ -9,15 +9,6 @@ class TouristAttraction extends Model
 {
     use HasFactory;
 
-    // protected $guarded = [];
-
-    // protected $fillable = [
-    //     'ta_name',
-    //     'ta_desc',
-    //     'ta_facilities',
-    //     'id_tourism_category'
-    // ];
-
     protected $guarded = ['id'];
 
     protected $appends = ['image_path'];

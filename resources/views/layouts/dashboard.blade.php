@@ -46,11 +46,6 @@
                             <i class="fas fa-expand-arrows-alt"></i>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                        </a>
-                    </li> --}}
                 </ul>
             </nav>
             <!-- /.navbar -->
@@ -60,7 +55,6 @@
                 <!-- Brand Logo -->
                 <a href="/" class="brand-link" style="text-decoration: none">
                     <i class="fas fa-sharp fa-solid fa-house-user"></i>
-                    {{-- <img src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
                     <span class="brand-text font-weight-light">Desa Wisata</span>
                 </a>
 
@@ -98,8 +92,6 @@
                                         </p>
                                     </a>
                                 </li>
-                            {{-- @endif --}}
-                            {{-- @if (Auth::user()->role == 'Administrator') --}}
                                 <li class="nav-item">
                                     <a href="/employees" class="nav-link">
                                         <i class="nav-icon fas fa-sharp fa-solid fa-user"></i>
@@ -197,30 +189,6 @@
                                     </p>
                                 </a>
                             </li>
-                            {{-- <li class="nav-header">EXAMPLES</li>            
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nav-icon fas fa-search"></i>
-                                    <p>
-                                        Search
-                                        <i class="fas fa-angle-left right"></i>
-                                    </p>
-                                </a>
-                                <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <a href="pages/search/simple.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Simple Search</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="pages/search/enhanced.html" class="nav-link">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Enhanced</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li> --}}
                         </ul>
                     </nav>
                     <!-- /.sidebar-menu -->

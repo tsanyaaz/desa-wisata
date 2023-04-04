@@ -48,22 +48,6 @@ Route::group(['middleware' => ['role:Pelanggan']], function () {
     Route::post('/reservations/update/{id}', [ReservationController::class, 'update'])->name('reservations.update');
     Route::get('/reservations/delete/{id}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
 });
-// //-----Home
-// Route::get('/', function () {
-//     return view('home');
-// });
-// //-----End Home
-
-// //-----Auth Reservations
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-//     Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
-//     Route::post('/reservations/store', [ReservationController::class, 'store'])->name('reservations.store');
-//     Route::get('/reservations/edit/{id}', [ReservationController::class, 'edit'])->name('reservations.edit');
-//     Route::post('/reservations/update/{id}', [ReservationController::class, 'update'])->name('reservations.update');
-//     Route::get('/reservations/delete/{id}', [ReservationController::class, 'destroy'])->name('reservations.destroy');
-// });
-// //-----End Auth Reservations
 
 //-----Auth
 Route::get('/login', [LoginController::class, 'login'])->name('login');
@@ -71,27 +55,7 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::post('/postregister', [LoginController::class, 'postregister'])->name('postregister');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-//-----End Auth
 
-// //-----Dashboard
-// Route::middleware(['auth', 'checkrole:Administrator,Bendahara,Pemilik'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         $countEmployees = Employee::count();
-//         $countEmployeesOwner = Employee::where('jobtitle', 'Pemilik')->count();
-//         return view('welcome', compact('countEmployees', 'countEmployeesOwner'));
-//     });
-// });
-// //-----End Dashboard
-
-// //-----Dashboard
-// Route::get('/', function () {
-//     $countEmployees = Employee::count();
-//     $countEmployeesOwner = Employee::where('jobtitle', 'Pemilik')->count();
-//     return view('welcome', compact('countEmployees', 'countEmployeesOwner'));
-// })->middleware('auth');
-// //-----End Dashboard
-
-// Profile
 Route::get('/users/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
 Route::get('/users/profile/edit', [UserController::class, 'editProfile'])->name('users.editProfile')->middleware('auth');
 Route::post('/users/profile/update', [UserController::class, 'updateProfile'])->name('users.updateProfile')->middleware('auth');

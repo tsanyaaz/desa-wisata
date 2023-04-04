@@ -60,13 +60,6 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="news_image" class="form-label">Foto</label>
-                                    <input type="file" class="form-control @error('news_image') is-invalid @enderror" id="news_image" name="news_image">
-                                    @error('news_image')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div> --}}
                                 <a href="{{ route('news.index') }}" class="btn btn-secondary mt-3">Batal</a>
                                 <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>

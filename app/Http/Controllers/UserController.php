@@ -23,7 +23,6 @@ class UserController extends Controller
             $users = User::paginate(5);
             Session::put('page', request()->fullUrl());
         }
-        // $users = user::all();
         return view('users/index', compact('users'));
     }
 
@@ -138,27 +137,6 @@ class UserController extends Controller
         $users->save();
         return redirect()->route('users.profile')->with('success', 'Data berhasil diubah!');
     }
-
-    // public function profile()
-    // {
-    //     $users = User::find(auth()->user()->id);
-    //     return view('users.profile', compact('users'));
-    // }
-
-    // public function editProfile()
-    // {
-    //     $users = User::find(auth()->user()->id);
-    //     return view('users/profile/edit', compact('users'));
-    // }
-
-    // public function updateProfile(Request $request)
-    // {
-    //     User::find(auth()->user()->id)->update($request->all());
-    //     if (session('page')) {
-    //         return Redirect::to(session('page'))->with('success', 'Data berhasil diubah!');
-    //     }
-    //     return redirect('users.profile')->with('success', 'Data berhasil diubah!');
-    // }
 
     // public function export()
     // {

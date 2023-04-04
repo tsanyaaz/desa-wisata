@@ -51,9 +51,7 @@
                             <table class="table table-bordered mb-3">
                                 <thead>
                                     <tr class="text-center">
-                                        {{-- <th style="width: 10px">#</th> --}}
                                         <th>Nama</th>
-                                        {{-- <th>Email</th> --}}
                                         <th>Alamat</th>
                                         <th>Telepon</th>
                                         <th>Jabatan</th>
@@ -64,9 +62,7 @@
                                     @foreach ($employees as $number => $employee)
                                         @if($employee->level == 'Administrator' || $employee->level == 'Bendahara' || $employee->level == 'Pemilik')       
                                             <tr>
-                                                {{-- <td>{{ $number + $employees->firstItem() }}</td> --}}
                                                 <td>{{ $employee->name }}</td>
-                                                {{-- <td>{{ $employee->email }}</td> --}}
                                                 <td>{{ $employee->address }}</td>
                                                 <td>{{ $employee->phone }}</td>
                                                 <td>{{ $employee->level }}</td>

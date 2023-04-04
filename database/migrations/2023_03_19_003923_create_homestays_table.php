@@ -14,12 +14,9 @@ return new class extends Migration
         Schema::create('homestays', function (Blueprint $table) {
             $table->id();
             $table->string('h_name');
-            // $table->unsignedBigInteger('id_picture')->nullable();
             $table->text('h_desc');
             $table->string('h_facilities');
             $table->timestamps();
-
-            // $table->foreign('id_picture')->references('id')->on('pictures')->onDelete('set null');
         });
     }
 

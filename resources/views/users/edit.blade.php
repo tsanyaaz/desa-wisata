@@ -28,11 +28,8 @@
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $users->email) }}" required autocomplete="email">
+                                </div>"password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $users->password) }}" required autocomplete="password">
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password', $users->password) }}" required autocomplete="password">
-                                </div> --}}
                                 <div class="mb-3">
                                     <label for="level" class="form-label">Level</label>
                                     <select id="level" class="form-control @error('level') is-invalid @enderror" name="level" required>

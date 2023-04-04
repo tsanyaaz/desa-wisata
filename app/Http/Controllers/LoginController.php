@@ -34,16 +34,10 @@ class LoginController extends Controller
             }
         }
         return redirect('/login')->with('error', 'Login gagal!');
-
-        // if (Auth::attempt($request->only('email', 'password'))) {
-        //     return redirect('/');
-        // }
-        // return redirect('/login')->with('error', 'Login gagal!');
     }
 
     public function postregister(Request $request)
     {
-        // dd($request->all());
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users',
@@ -59,19 +53,6 @@ class LoginController extends Controller
         ]);
 
         return redirect('/');
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:6',
-        // ]);
-
-        // $user = new \App\Models\User;
-        // $user->name = $request->name;
-        // $user->email = $request->email;
-        // $user->password = bcrypt($request->password);
-        // $user->save();
-
-        // return redirect('/login')->with('success', 'Register berhasil!');
     }
 
     public function logout()

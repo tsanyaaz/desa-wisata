@@ -14,14 +14,11 @@ return new class extends Migration
         Schema::create('tour_packages', function (Blueprint $table) {
             $table->id();
             $table->string('tp_name');
-            // $table->unsignedBigInteger('id_picture')->nullable();
             $table->text('tp_desc')->nullable();
             $table->string('tp_facilities');
             $table->integer('tp_price');
             $table->decimal('tp_discount', 10, 0)->nullable();
             $table->timestamps();
-
-            // $table->foreign('id_picture')->references('id')->on('pictures')->onDelete('cascade');
         });
     }
 

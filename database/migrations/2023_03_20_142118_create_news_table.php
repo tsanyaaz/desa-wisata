@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('news_content');
             $table->datetime('news_date');
             $table->unsignedBigInteger('id_news_category');
-            // $table->text('news_image')->nullable();
             $table->timestamps();
 
             $table->foreign('id_news_category')->references('id')->on('news_categories');

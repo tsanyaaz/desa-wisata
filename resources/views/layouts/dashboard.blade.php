@@ -76,10 +76,10 @@
                         <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
                             <li class="nav-item">
-                                <a href="/dashboard" class="nav-link">
+                                <a href="{{ Auth::user()->level == 'Pelanggan' ? '/' : '/dashboard' }}" class="nav-link">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
                                     <p>
-                                        Dashboard
+                                        {{ Auth::user()->level == 'Pelanggan' ? 'Home' : 'Dashboard' }}
                                     </p>
                                 </a>
                             </li>
@@ -171,7 +171,7 @@
                                 </a>
                             </li>
                             @endif
-                            @if (Auth::user()->level != 'Administrator')
+                            @if (!in_array(Auth::user()->level, ['Administrator', 'Pelanggan']))
                             <li class="nav-item">
                                 <a href="/reservations" class="nav-link">
                                     <i class="nav-icon fas fa-solid fa-book"></i>

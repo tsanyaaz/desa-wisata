@@ -35,6 +35,11 @@ Route::group(['middleware' => ['auth', 'role:Administrator,Bendahara,Pemilik']],
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Detail
+Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+Route::get('/touristAttractions/{id}', [TouristAttractionController::class, 'show'])->name('touristAttractions.show');
+Route::get('/homestays/{id}', [HomestayController::class, 'show'])->name('homestays.show');
+
 Route::group(['middleware' => ['role:Pelanggan']], function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::get('/reservations/create', [ReservationController::class, 'create'])->name('reservations.create');
@@ -199,6 +204,7 @@ Route::group(['middleware' => ['auth', 'role:Administrator']], function () {
 
     // Delete
     Route::get('/news/delete/{id}', [NewsController::class, 'destroy'])->name('news.destroy')->middleware('auth');
+
     //-----End News
 
     //-----News Category

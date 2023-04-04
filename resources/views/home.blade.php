@@ -1,4 +1,4 @@
-<!doctype html>
+{{-- <!doctype html>
 <html lang="en">
     <head>
         <!-- Required meta tags -->
@@ -21,7 +21,7 @@
 
         <!-- Home CSS -->
         {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
-        <link rel="stylesheet" href="{{ asset('home.css') }}">
+        {{-- <link rel="stylesheet" href="{{ asset('home.css') }}">
         <title>Desa Wisata</title>
     </head>
     <body>
@@ -52,19 +52,23 @@
                                     <a class="nav-link" href="#reservation">Reservasi</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> --}}
                         {{-- <div>
                             <div>
                                 <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="img-circle elevation-2" alt="User Image" style="width: 32px; margin-left: 16px;">
                             </div>
                         </div> --}}
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
                     </div>
                 </nav>
-            </section>
+            </section> --}}
             
+
+            @extends('layouts.show_home')
+
+            @section('showContent')
             <section  id="home">
                 <div class="container">
                     <div class="row d-flex align-items-center">
@@ -90,14 +94,12 @@
                         @foreach ($news as $data)
                         <div class="col-md-4">
                             <div class="card">
-                                @if ($data->news_image)
-                                <img src="{{ asset('news_images/'.$data->news_image) }}" class="card-img-top" alt="{{ $data->news_title }}">
-                                @else
-                                <img src="{{ asset('news_images/default.png') }}" class="card-img-top" alt="{{ $data->news_title }}">
+                                @if(count($data->pictures) > 0)
+                                <img src="{{ asset($data->pictures[0]->path) }}" class="card-img-top" alt="{{ $data->ta_name }}">
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $data->news_title }}</h5>
-                                    <p class="card-text">{{ $data->news_content }}</p>
+                                    <p class="card-text">{{ Str::limit($data->news_content), 25, '...' }}</p>
                                     <a href="/news/{{ $data->id }}" class="btn btn-primary">Read More</a>
                                 </div>
                             </div>
@@ -155,7 +157,7 @@
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $touristAttraction->ta_name }}</h5>
-                                    <p class="card-text">{{ $touristAttraction->ta_desc }}</p>
+                                    <p class="card-text">{{ Str::limit($touristAttraction->ta_desc, 25, '...') }}</p>
                                     <a href="/touristAttractions/{{ $touristAttraction->id }}" class="btn btn-primary">Read More</a>
                                 </div>
                             </div>
@@ -207,7 +209,7 @@
                                         @endif
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $homestay->h_name }}</h5>
-                                            <p class="card-text">{{ $homestay->h_desc }}</p>
+                                            <p class="card-text">{{ Str::limit($homestay->h_desc, 25, '...') }}</p>
                                             <a href="/homestays/{{ $homestay->id }}" class="btn btn-primary">Read More</a>
                                         </div>
                                     </div>
@@ -275,8 +277,9 @@
                     </div>
                 </div>
             </section>
-        </div>
+            @endsection
+        {{-- </div>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     </body>
-</html>
+</html> --}}

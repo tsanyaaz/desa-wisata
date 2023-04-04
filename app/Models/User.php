@@ -51,4 +51,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(Employee::class, 'id_user');
     }
+
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
+    {
+        return $this->pictures->first()->path;
+    }
+
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'imageable');
+    }
 }

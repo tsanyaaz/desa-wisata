@@ -11,7 +11,7 @@
                         <h2 class="mb-1">{{ Auth::user()->name }}</h2>
                         <p class="mb-0 font-weight-bold text-sm">{{ Auth::user()->level }}</p>
                     </div>
-                    <form method="POST" action="/users/profile/update/">
+                    <form method="POST" action="/users/profile/update/" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label">Nama</label>
@@ -33,6 +33,15 @@
                             <label for="password" class="form-label">Password</label>
                             <input id="password" type="password" class="form-control" name="password">
                         </div>
+                        <div>
+                            <label for="picture" class="form-label">Foto</label>
+                            <br>
+                            @foreach ($users->pictures as $picture)
+                                <img src="{{ asset($picture->path) }}" alt="{{  $users->h_name }}" width="100">
+                            @endforeach
+                            <input type="file" class="form-control mt-2" id="picture" name="picture[]"  multiple>
+                        </div>
+                        <a href="/users/profile" class="btn btn-secondary mt-3">Batal</a>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </div>

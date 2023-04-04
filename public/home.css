@@ -36,3 +36,15 @@ body {
 #reservation {
     padding-bottom: 50px;
 }
+
+.btn {
+    background-color: #66a495;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #038463;
+    color: white;
+    border: none;
+}

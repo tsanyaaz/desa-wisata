@@ -306,4 +306,10 @@ class TouristAttractionController extends Controller
         }
         return redirect('/touristAttractions')->with('success', 'Data berhasil dihapus!');
     }
+
+    public function show($id)
+    {
+        $touristAttractions = TouristAttraction::with('pictures')->find($id);
+        return view('/touristAttractions/show', compact('touristAttractions'));
+    }
 }

@@ -50,8 +50,8 @@
                                 <div>
                                     <label for="picture" class="form-label">Foto</label>
                                     <br>
-                                    @foreach ($touristAttractions->pictures as $picture)
-                                        <img src="{{ asset($picture->path) }}" alt="{{  $touristAttractions->ta_name }}" width="100">
+                                    @foreach ($news->pictures as $picture)
+                                        <img src="{{ asset($picture->path) }}" alt="{{  $news->ta_name }}" width="100">
                                     @endforeach
                                     <input type="file" class="form-control mt-2" id="picture" name="picture[]"  multiple>
                                 </div>

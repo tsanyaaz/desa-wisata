@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Picture;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use PDF;
+use Illuminate\Support\Facades\Storage;
+
+// use PDF;
 
 class UserController extends Controller
 {
@@ -96,7 +99,7 @@ class UserController extends Controller
 
     public function profile()
     {
-        $users = User::find(auth()->user()->id);
+        $users = User::find(auth()->user()->id)->with('pictures');
         return view('users.profile', compact('users'));
     }
 
@@ -117,6 +120,21 @@ class UserController extends Controller
         $users->address = $request->input('address');
         $users->phone = $request->input('phone');
 
+        if ($request->hasFile('picture')) {
+            foreach ($users->pictures as $picture) {
+                Storage::delete($picture->path);
+                $picture->delete();
+            }
+            $files = $request->file('picture');
+            $images = [];
+            $directory = 'userprofile/' . $users->id;
+            foreach ($files as $file) {
+                Picture::store($file, $directory, $users, false);
+                $images[] = $file->getClientOriginalName();
+            }
+        } else {
+            $directory = 'userprofile/' . $users->id;
+        }
         $users->save();
         return redirect()->route('users.profile')->with('success', 'Data berhasil diubah!');
     }

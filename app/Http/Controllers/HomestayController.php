@@ -106,4 +106,10 @@ class HomestayController extends Controller
         }
         return redirect('/homestays')->with('success', 'Data berhasil dihapus!');
     }
+
+    public function show($id)
+    {
+        $homestays = Homestay::find($id);
+        return view('homestays/show', compact('homestays'));
+    }
 }

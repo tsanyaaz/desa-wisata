@@ -7,15 +7,19 @@
             <div class="card">
                 <div class="card-header">
                     <div>
-                        <i class="fas fa-gear "></i>
+                        
+                        <div>
+                            <a href="/users/profile/edit" class="btn btn-primary rounded-pill">Edit Profil</a>
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center align-items-center flex-column">
-                        <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image">
+                        @if (Auth::user()->pictures->count() > 0)
+                            <img src="{{ asset(Auth::user()->pictures->first()->path) }}" class="rounded-circle mb-3" alt="User Image" style="width: 300px">
+                        @else
+                            <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image" style="width: 300px">
+                        @endif
                         <h2 class="mb-1">{{ Auth::user()->name }}</h2>
                         <p class="mb-0 font-weight-bold text-sm">{{ Auth::user()->level }}</p>
-                    </div>
-                    <div>
-                        <a href="/users/profile/edit" class="btn btn-primary">Edit Profil</a>
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama</label>

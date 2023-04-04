@@ -142,4 +142,10 @@ class NewsController extends Controller
         }
         return redirect('/news')->with('success', 'Data berhasil dihapus!');
     }
+
+    public function show($id)
+    {
+        $news = News::with('pictures')->find($id);
+        return view('/news/show', compact('news'));
+    }
 }

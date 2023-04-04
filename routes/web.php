@@ -13,6 +13,8 @@ use App\Http\Controllers\TourPackageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
+use App\Models\TouristAttraction;
+use App\Models\Homestay;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,9 +29,11 @@ use App\Models\User;
 
 Route::group(['middleware' => ['auth', 'role:Administrator,Bendahara,Pemilik']], function () {
     Route::get('/dashboard', function () {
-        $countEmployees = User::where('level', 'Administrator,Bendahara,Pemilik')->count();
+        $countEmployees = User::whereNotIn('level', ['Pelanggan'])->count();
         $countEmployeesOwner = User::where('level', 'Pemilik')->count();
-        return view('welcome', compact('countEmployees', 'countEmployeesOwner'));
+        $countTouristAttractions = TouristAttraction::count();
+        $countHomestays = Homestay::count();
+        return view('welcome', compact('countEmployees', 'countEmployeesOwner', 'countTouristAttractions', 'countHomestays'));
     });
 });
 

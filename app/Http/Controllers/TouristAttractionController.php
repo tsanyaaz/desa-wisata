@@ -165,16 +165,134 @@ class TouristAttractionController extends Controller
     public function edit($id)
     {
         $touristAttractions = TouristAttraction::find($id);
+        // $directory = 'touristAttractions/' . $touristAttractions->id;
         $tourismCategories = TourismCategory::all();
+        // $pictures = json_decode($touristAttractions->picture);
         return view('touristAttractions/edit', compact('touristAttractions', 'tourismCategories'));
     }
 
+    // public function update(Request $request, TouristAttraction $touristAttractions)
+    // {
+    //     $this->validate($request, [
+    //         'ta_name' => 'required',
+    //         'ta_desc' => 'required',
+    //         'ta_facilities' => 'required',
+    //         'id_tourism_category' => 'required',
+    //         'picture.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    //     ]);
+
+    //     $touristAttractions->update($request->only(['ta_name', 'ta_desc', 'ta_facilities', 'id_tourism_category']));
+
+    //     $directory = 'touristAttractions/' . $touristAttractions->id;
+
+    //     // if ($request->hasFile('picture')) {
+    //     //     $pictures = $request->file('picture');
+    //     //     foreach ($pictures as $picture) {
+    //     //         Picture::store($picture, $directory, $touristAttractions, false);
+    //     //     }
+    //     // }
+    //     if ($request->hasFile('picture')) {
+    //         foreach ($touristAttractions->pictures as $picture) {
+    //             Storage::delete($picture->path);
+    //             $picture->delete();
+    //         }
+    //         foreach ($request->file('picture') as $file) {
+    //             $path = $file->store($directory);
+    //             $picture = new Picture([
+    //                 'path' => $path,
+    //             ]);
+    //             $touristAttractions->pictures()->save($picture);
+    //         }
+    //     }
+    //     // $picture = [];
+    //     // $files = Storage::allFiles($directory);
+
+    //     // foreach ($files as $file) {
+    //     //     $url = Storage::url($file);
+    //     //     $pictures[] = $url;
+    //     // }
+
+    //     return redirect()->route('touristAttractions.index');
+    // }
+
     public function update(Request $request, $id)
     {
-        TouristAttraction::find($id)->update($request->all());
-        if (session('page')) {
-            return Redirect::to(session('page'))->with('success', 'Data berhasil diubah!');
+        $this->validate($request, [
+            'ta_name' => 'required',
+            'ta_desc' => 'required',
+            'ta_facilities' => 'required',
+            'id_tourism_category' => 'required',
+            // 'picture' => 'nullable|array',
+            'picture.*' => 'image|mimes:jpeg,png,jpg,gif,svg',
+        ]);
+
+        $touristAttractions = TouristAttraction::find($id);
+        $touristAttractions->update([
+            'ta_name' => $request->input('ta_name'),
+            'ta_desc' => $request->input('ta_desc'),
+            'ta_facilities' => $request->input('ta_facilities'),
+            'id_tourism_category' => $request->input('id_tourism_category'),
+        ]);
+
+        if ($request->hasFile('picture')) {
+            foreach ($touristAttractions->pictures as $picture) {
+                Storage::delete($picture->path);
+                $picture->delete();
+            }
+            $files = $request->file('picture');
+            $images = [];
+            $directory = 'touristAttractions/' . $id;
+            foreach ($files as $file) {
+                Picture::store($file, $directory, $touristAttractions, false);
+                $images[] = $file->getClientOriginalName();
+            }
+            // $touristAttractions->picture = json_encode($images);
+        } else {
+            $directory = 'touristAttractions/' . $id;
         }
+        // if ($request->hasFile('picture')) {
+        //     $directory = 'touristAttractions/' . $id;
+        //     $files = $request->file('picture');
+        //     $images = [];
+        //     foreach ($files as $file) {
+        //         $imageName = $id . '_' . $file->getClientOriginalName();
+        //         Storage::putFileAs($directory, $file, $imageName, false);
+        //         // Picture::store($file, $directory, $touristAttractions, false);
+        //         $images[] = $imageName;
+        //     }
+        //     $touristAttractions->picture = json_encode($images);
+        //     // } else {
+        //     //     $directory = 'touristAttractions/' . $id;
+        // }
+
+        // $pictures = array();
+        // $files = Storage::allFiles($directory);
+
+        // foreach ($files as $file) {
+        //     $url = Storage::url($file);
+        //     $pictures[] = $url;
+        // }
+        // $touristAttractions->picture = json_encode($pictures);
+        $touristAttractions->save();
+        // if ($request->hasFile('picture')) {
+
+        //     foreach ($touristAttractions->pictures as $picture) {
+        //         // Storage::delete($picture->path);
+        //         $picture->delete();
+        //     }
+        //     foreach ($request->file('picture') as $file) {
+        //         $filename = $touristAttractions->id . '_' . $file->getClientOriginalName();
+        //         $directory = 'public/touristAttractions/' . $touristAttractions->id;
+        //         $path = $file->storeAs($directory, $filename);
+        //         $picture = new Picture([
+        //             'path' => $path,
+        //         ]);
+        //         $touristAttractions->pictures()->save($picture);
+        //     }
+        // }
+        // if (session('page')) {
+        //     return Redirect::to(session('page'))->with('success', 'Data berhasil diubah!');
+        // }
         return redirect('/touristAttractions')->with('success', 'Data berhasil diubah!');
     }
 

@@ -25,7 +25,8 @@
                                     <label for="tc_name" class="form-label">Nama Kategori</label>
                                     <input type="text" class="form-control" id="tc_name" name="tc_name" value="{{ $tourismCategories->tc_name }}">
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <a href="{{ route('tourismCategories.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/homestays/update/{{ $homestays->id }}" method="POST">
+                            <form action="/homestays/update/{{ $homestays->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="h_name" class="form-label">Nama Penginapan</label>
@@ -33,7 +33,16 @@
                                     <label for="h_facilities" class="form-label">Fasilitas</label>
                                     <input type="text" class="form-control" id="h_facilities" name="h_facilities" value="{{ $homestays->h_facilities }}">                                    
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <div>
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <br>
+                                    @foreach ($homestays->pictures as $picture)
+                                        <img src="{{ asset($picture->path) }}" alt="{{  $homestays->h_name }}" width="100">
+                                    @endforeach
+                                    <input type="file" class="form-control mt-2" id="picture" name="picture[]"  multiple>
+                                </div>
+                                <a href="{{ route('homestays.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

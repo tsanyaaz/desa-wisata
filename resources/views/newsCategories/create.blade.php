@@ -28,7 +28,8 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <a href="{{ route('newsCategories.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

@@ -49,17 +49,25 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 form-group">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+                                    <input type="password" class="form-control password input-field" id="password" name="password">
+                                    <span class="eye" onclick="myFunction()">
+                                        <i id="show" class="fas fa-solid fa-eye"></i>
+                                        <i id="hide" class="fas fa-solid fa-eye-slash"></i>
+                                    </span>
                                     @error('password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <div class="mb-3">
-                                    <label for="password_confirmation" class="form-label">Konfirmasi Password</label>
-                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
-                                    @error('password_confirmation')
+                                <div class="mb-3 form-group">
+                                    <label for="password" class="form-label">Konfirmasi Password</label>
+                                    <input type="password" class="form-control password input-field" id="password" name="password">
+                                    <span class="eye" onclick="myFunction()">
+                                        <i id="show" class="fas fa-solid fa-eye"></i>
+                                        <i id="hide" class="fas fa-solid fa-eye-slash"></i>
+                                    </span>
+                                    @error('password')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -75,7 +83,8 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->
@@ -86,3 +95,21 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function myFunction() {
+        var passField = document.getElementById("password");
+        var showPass = document.getElementById("show");
+        var hidePass = document.getElementById("hide");
+
+        if (passField.type === "password") {
+            passField.type = "text";
+            showPass.style.display = "block";
+            hidePass.style.display = "none";
+        } else {
+            passField.type = "password";
+            showPass.style.display = "none";
+            hidePass.style.display = "block";
+        }
+    }
+</script>

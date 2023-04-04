@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Data Pengguna</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Pengguna</li>
-                        </ol>
-                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -27,7 +21,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Daftar Pengguna</h3>
                             <div class="card-tools">
-                                <a class="btn btn-success" href="/users/create"><i class="fas fa-user-plus"></i> Tambah Pengguna</a>
+                                <a class="btn btn-success rounded-pill" href="/users/create"><i class="fas fa-user-plus"></i> Tambah Pengguna</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -43,11 +37,11 @@
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                {{-- <div class="col-sm-4">
                                     <div class="form-group">
-                                        <a href="/export" class="btn btn-primary"><i class="fas fa-download"></i> Export PDF</a>
+                                        <a href="/export" class="btn btn-primary rounded-pill"><i class="fas fa-download"></i> Export PDF</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -74,12 +68,30 @@
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->level }}</td>
-                                        <td>{{ $user->aktif == 1 ? 'Aktif' : 'Nonaktif' }}</td>
-                                        <td>{{ $user->created_at }}</td>
-                                        <td>{{ $user->updated_at }}</td>
+                                        <td class="text-center">{{ $user->aktif == 1 ? 'Aktif' : 'Nonaktif' }}</td>
+                                        <td class="text-center">{{ $user->created_at }}</td>
+                                        <td class="text-center">{{ $user->updated_at }}</td>
                                         <td class="text-center">
                                             <div class="btn-group">
-                                                <a href="/users/edit/{{ $user->id }}" class="btn btn-primary me-2"><i class="fas fa-edit"></i></a>
+                                                <a href="/users/edit/{{ $user->id }}" class="btn btn-primary me-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit User"><i class="fas fa-edit"></i></a>
+                                                <button type="button" class="btn btn-danger delete me-1" data-id="{{ $user->id }}" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete User"><i class="fas fa-trash"></i></button>
+                                                @if($user->aktif == 1)
+                                                    <form action="{{ route('users.deactivate', $user->id) }}" method="POST" style="display:inline">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Deactivate User"><i class="fa fa-ban"></i></button>
+                                                    </form>
+                                                @else
+                                                    <form action="{{ route('users.activate', $user->id) }}" method="POST" style="display:inline">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <button type="submit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Activate User"><i class="fas fa-toggle-on"></i></button>
+                                                    </form>
+                                                @endif
+                                            </div>
+                                              
+                                            {{-- <div class="btn-group">
+                                                <a href="/users/edit/{{ $user->id }}" class="btn btn-primary me-1"><i class="fas fa-edit"></i></a>
                                                 <button type="button" class="btn btn-danger delete me-1" data-id="{{ $user->id }}"><i class="fas fa-trash"></i></button>
                                                 @if($user->aktif == 1)
                                                     <form action="{{ route('users.deactivate', $user->id) }}" method="POST" style="display:inline">
@@ -94,13 +106,18 @@
                                                         <button type="submit" class="btn btn-success"><i class="fas fa-toggle-on"></i></i></button>
                                                     </form>
                                                 @endif
-                                            </div>
+                                            </div> --}}
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                             {{ $users->links() }}
+                            @if (Session::has('page') && strpos(Session::get('page'), 'search') !== false)
+                                <div class="mt-3">
+                                    <a href="/users" class="btn btn-secondary">Kembali</a>
+                                </div>
+                            @endif
                         </div>
                         <!-- /.card-body -->
                     </div>

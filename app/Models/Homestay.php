@@ -15,7 +15,7 @@ class Homestay extends Model
 
     public function getImagePathAttribute()
     {
-        return $this->picture->path;
+        return $this->pictures->first()->path;
     }
 
     public function pictures()

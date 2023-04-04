@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/news/update/{{ $news->id }}" method="POST">
+                            <form action="/news/update/{{ $news->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="news_title" class="form-label">Judul Berita</label>
@@ -47,14 +47,23 @@
                                     <input id="news_date" type="date" class="form-control @error('news_date') is-invalid @enderror" name="news_date" value="{{ old('news_date', $news->news_date) }}" required autocomplete="news_date">
                                     {{-- <input type="date" class="form-control" id="news_date" name="news_date" value="{{ $news->news_date }}"> --}}                                 
                                 </div>
-                                <div class="mb-3">
+                                <div>
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <br>
+                                    @foreach ($touristAttractions->pictures as $picture)
+                                        <img src="{{ asset($picture->path) }}" alt="{{  $touristAttractions->ta_name }}" width="100">
+                                    @endforeach
+                                    <input type="file" class="form-control mt-2" id="picture" name="picture[]"  multiple>
+                                </div>
+                                {{-- <div class="mb-3">
                                     <label for="news_image" class="form-label">Foto</label>
                                     <br>
                                     <img src="{{ asset('news_images/'.$news->news_image) }}" alt="{{ $news->news_title }}" class="img-fluid" style="width: 100px">
                                     <input id="news_image" type="file" class="form-control @error('news_image') is-invalid @enderror" name="news_image" value="{{ old('news_image', $news->news_image) }}" required autocomplete="news_image">
                                     {{-- <input type="file" class="form-control" id="news_image" name="news_image" value="{{ $news->news_image }}"> --}}                             
-                                </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                {{-- </div> --}} 
+                                <a href="{{ route('news.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

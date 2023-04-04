@@ -1,0 +1,16 @@
+#show {
+    display: none;
+}
+.eye {
+    position: absolute;
+    right: 10px;
+    top: 60%;
+    /* transform: translateY(-100%); */
+    cursor: pointer;
+}
+.form-group {
+    position: relative;
+}
+/* .form-control.password {
+    margin-top: 60px;
+} */

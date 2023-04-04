@@ -41,7 +41,8 @@
                                         <option value="Pemilik" @if (old('level', $employees->level) === 'Pemilik') selected @endif>Pemilik</option>
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <a href="{{ route('employees.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                     </div>

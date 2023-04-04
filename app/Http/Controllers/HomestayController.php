@@ -61,7 +61,35 @@ class HomestayController extends Controller
 
     public function update(Request $request, $id)
     {
-        Homestay::find($id)->update($request->all());
+        $this->validate($request, [
+            'h_name' => 'required',
+            'h_desc' => 'required',
+            'h_facilities' => 'required',
+            'picture' => 'required|array|min:1',
+            'picture.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        $homestays = Homestay::find($id);
+        $homestays->update([
+            'h_name' => $request->h_name,
+            'h_desc' => $request->h_desc,
+            'h_facilities' => $request->h_facilities,
+        ]);
+        if ($request->hasFile('picture')) {
+            foreach ($homestays->pictures as $picture) {
+                Storage::delete($picture->path);
+                $picture->delete();
+            }
+            $files = $request->file('picture');
+            $images = [];
+            $directory = 'homestays/' . $id;
+            foreach ($files as $file) {
+                Picture::store($file, $directory, $homestays, false);
+                $images[] = $file->getClientOriginalName();
+            }
+        } else {
+            $directory = 'homestays/' . $id;
+        }
+        $homestays->save();
         if (session('page')) {
             return Redirect::to(session('page'))->with('success', 'Data berhasil diubah!');
         }
@@ -70,7 +98,9 @@ class HomestayController extends Controller
 
     public function destroy($id)
     {
-        Homestay::find($id)->delete();
+        $homestays = Homestay::find($id);
+        $homestays->pictures()->delete();
+        $homestays->delete();
         if (session('page')) {
             return Redirect::to(session('page'))->with('success', 'Data berhasil dihapus!');
         }

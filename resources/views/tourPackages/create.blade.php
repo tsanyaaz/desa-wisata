@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('tourPackages.store') }}" method="POST">
+                            <form action="{{ route('tourPackages.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="tp_name" class="form-label">Nama Paket</label>
@@ -56,7 +56,15 @@
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <div class="mb-3">
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <input type="file" class="form-control" id="picture" name="picture[]" multiple>
+                                    @error('picture')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <a href="{{ route('tourPackages.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

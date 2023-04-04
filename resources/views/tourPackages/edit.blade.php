@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="/tourPackages/update/{{ $tourPackages->id }}" method="POST">
+                            <form action="/tourPackages/update/{{ $tourPackages->id }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="tp_name" class="form-label">Nama Paket</label>
@@ -41,7 +41,16 @@
                                     <label for="tp_discount" class="form-label">Diskon</label>
                                     <input type="number" class="form-control" id="tp_discount" name="tp_discount" value="{{ $tourPackages->tp_discount }}">
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <div>
+                                    <label for="picture" class="form-label">Foto</label>
+                                    <br>
+                                    @foreach ($tourPackages->pictures as $picture)
+                                        <img src="{{ asset($picture->path) }}" alt="{{  $tourPackages->ta_name }}" width="100">
+                                    @endforeach
+                                    <input type="file" class="form-control mt-2" id="picture" name="picture[]"  multiple>
+                                </div>
+                                <a href="{{ route('tourPackages.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

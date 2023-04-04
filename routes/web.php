@@ -12,7 +12,7 @@ use App\Http\Controllers\HomestayController;
 use App\Http\Controllers\TourPackageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\HomeController;
-use App\Models\Employee;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +27,8 @@ use App\Models\Employee;
 
 Route::group(['middleware' => ['auth', 'role:Administrator,Bendahara,Pemilik']], function () {
     Route::get('/dashboard', function () {
-        $countEmployees = Employee::count();
-        $countEmployeesOwner = Employee::where('jobtitle', 'Pemilik')->count();
+        $countEmployees = User::where('level', 'Administrator,Bendahara,Pemilik')->count();
+        $countEmployeesOwner = User::where('level', 'Pemilik')->count();
         return view('welcome', compact('countEmployees', 'countEmployeesOwner'));
     });
 });
@@ -86,6 +86,11 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // })->middleware('auth');
 // //-----End Dashboard
 
+// Profile
+Route::get('/users/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
+Route::get('/users/profile/edit', [UserController::class, 'editProfile'])->name('users.editProfile')->middleware('auth');
+Route::post('/users/profile/update', [UserController::class, 'updateProfile'])->name('users.updateProfile')->middleware('auth');
+
 Route::group(['middleware' => ['auth', 'role:Administrator']], function () {
     //-----Employees
     // Index
@@ -132,6 +137,8 @@ Route::group(['middleware' => ['auth', 'role:Administrator']], function () {
 
     // Delete
     Route::get('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+
+
     //-----End Users
 
     //-----Tourist Attractions

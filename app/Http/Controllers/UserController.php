@@ -94,11 +94,59 @@ class UserController extends Controller
         return redirect('/users')->with('success', 'Data berhasil dinonaktifkan!');
     }
 
-    public function export()
+    public function profile()
     {
-        $users = user::all();
-        view()->share('users', $users);
-        $pdf = PDF::loadView('laporan-pdf');
-        return $pdf->download('laporan.pdf');
+        $users = User::find(auth()->user()->id);
+        return view('users.profile', compact('users'));
     }
+
+    public function editProfile()
+    {
+        $users = User::find(auth()->user()->id);
+        return view('users.editprofile', compact('users'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $users = User::find(auth()->user()->id);
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        if ($request->input('password')) {
+            $users->password = bcrypt($request->input('password'));
+        }
+        $users->address = $request->input('address');
+        $users->phone = $request->input('phone');
+
+        $users->save();
+        return redirect()->route('users.profile')->with('success', 'Data berhasil diubah!');
+    }
+
+    // public function profile()
+    // {
+    //     $users = User::find(auth()->user()->id);
+    //     return view('users.profile', compact('users'));
+    // }
+
+    // public function editProfile()
+    // {
+    //     $users = User::find(auth()->user()->id);
+    //     return view('users/profile/edit', compact('users'));
+    // }
+
+    // public function updateProfile(Request $request)
+    // {
+    //     User::find(auth()->user()->id)->update($request->all());
+    //     if (session('page')) {
+    //         return Redirect::to(session('page'))->with('success', 'Data berhasil diubah!');
+    //     }
+    //     return redirect('users.profile')->with('success', 'Data berhasil diubah!');
+    // }
+
+    // public function export()
+    // {
+    //     $users = user::all();
+    //     view()->share('users', $users);
+    //     $pdf = PDF::loadView('laporan-pdf');
+    //     return $pdf->download('laporan.pdf');
+    // }
 }

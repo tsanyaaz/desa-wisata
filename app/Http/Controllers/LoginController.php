@@ -21,8 +21,12 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
+
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
+            if (!$user->aktif) {
+                return response()->json(['message' => 'Your account has been deactivated'], 403);
+            }
             if ($user->level == 'Pelanggan') {
                 return redirect('/');
             } elseif ($user->level == 'Administrator' || $user->level == 'Bendahara' || $user->level == 'Pemilik') {

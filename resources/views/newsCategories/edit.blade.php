@@ -25,7 +25,8 @@
                                     <label for="nc_name" class="form-label">Nama Kategori</label>
                                     <input type="text" class="form-control" id="nc_name" name="nc_name" value="{{ $newsCategories->nc_name }}">
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                                <a href="{{ route('newsCategories.index') }}" class="btn btn-secondary mt-3">Batal</a>
+                                <button type="submit" class="btn btn-primary mt-3">Kirim</button>
                             </form>
                         </div>
                         <!-- /.card-body -->

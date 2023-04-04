@@ -9,10 +9,17 @@ class TourPackage extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
-    public function picture()
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
     {
-        return $this->belongsTo(Picture::class);
+        return $this->pictures->first()->path;
+    }
+
+    public function pictures()
+    {
+        return $this->morphMany(Picture::class, 'imageable');
     }
 }

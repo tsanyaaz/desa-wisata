@@ -42,6 +42,7 @@
                                         <option value="Pemilik" @if (old('level', $users->level) === 'Pemilik') selected @endif>Pemilik</option>
                                     </select>
                                 </div>
+                                <a href="{{ route('users.index') }}" class="btn btn-secondary mt-3">Cancel</a>
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
                             </form>
                         </div>

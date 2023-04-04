@@ -17,6 +17,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    {{-- CSS Show Password --}}
+    <link rel="stylesheet" href="{{ asset('showpass.css') }}">
 </head>
     <body class="hold-transition  sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
         <div class="wrapper">
@@ -70,7 +72,7 @@
                             <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="img-circle elevation-2" alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block" style="text-decoration: none">{{ Auth::user()->name }}</a>
+                            <a href="/users/profile/" class="d-block" style="text-decoration: none">{{ Auth::user()->name }}</a>
                         </div>
                     </div>
 
@@ -237,13 +239,13 @@
             <!-- /.control-sidebar -->
 
             <!-- Main Footer -->
-            <footer class="main-footer">
+            {{-- <footer class="main-footer">
                 <strong>Copyright &copy; 2023 <a href="/">Desa Wisata</a>.</strong>
                 All rights reserved.
                 <div class="float-right d-none d-sm-inline-block">
                 <b>TsanyA</b>
                 </div>
-            </footer>
+            </footer> --}}
         </div>
         <!-- ./wrapper -->
 

@@ -9,12 +9,6 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Data Kategori Wisata</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Data Kategori Wisata</li>
-                        </ol>
-                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -27,7 +21,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Daftar Kategori Wisata</h3>
                             <div class="card-tools">
-                                <a class="btn btn-success" href="/tourismCategories/create"><i class="fas fa-user-plus"></i> Tambah Kategori Wisata</a>
+                                <a class="btn btn-success rounded-pill" href="/tourismCategories/create"><i class="fas fa-user-plus"></i> Tambah Kategori Wisata</a>
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -39,15 +33,15 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <form action="/tourismCategories" method="GET">
-                                                <input type="search" class="form-control search" placeholder="Cari Kategori Wisata" name="search">
+                                            <input type="search" class="form-control search" placeholder="Cari Kategori Wisata" name="search">
                                         </form>
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
+                                {{-- <div class="col-sm-4">
                                     <div class="form-group">
                                         <a href="/export" class="btn btn-primary"><i class="fas fa-download"></i> Export PDF</a>
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                             @if ($message = Session::get('success'))
                                 <div class="alert alert-success">
@@ -78,6 +72,11 @@
                                 </tbody>
                             </table>
                             {{ $tourismCategories->links() }}
+                            @if (Session::has('page') && strpos(Session::get('page'), 'search') !== false)
+                                <div class="mt-3">
+                                    <a href="/tourismCategories" class="btn btn-secondary">Kembali</a>
+                                </div>
+                            @endif
                         </div>
                         <!-- /.card-body -->
                     </div>

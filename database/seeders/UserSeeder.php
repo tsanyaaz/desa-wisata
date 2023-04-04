@@ -21,8 +21,8 @@ class UserSeeder extends Seeder
             'address' => 'Jl. Jalan',
             'phone' => '081234567890',
             'aktif' => 1,
-            'created_at' => '2021-01-01 00:00:00',
-            'updated_at' => '2021-01-01 00:00:00',
+            'created_at' => '2023-04-05 00:00:00',
+            'updated_at' => '2023-04-05 00:00:00',
         ]);
     }
 }

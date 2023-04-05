@@ -55,11 +55,7 @@
                     <div>
                         <div class="dropdown">
                             <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if (Auth::user()->pictures->count() > 0)
-                                    <img src="{{ asset(Auth::user()->pictures->first()->path) }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
-                                @else
-                                    <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
-                                @endif
+                                <img src="{{ asset('AdminLTE/dist/img/user-default-profile.png') }}" class="rounded-circle mb-3" alt="User Image" style="width: 32px">
                             </a>
                         
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

@@ -40,9 +40,9 @@ Route::group(['middleware' => ['auth', 'role:Administrator,Bendahara,Pemilik']],
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Detail
-Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
-Route::get('/touristAttractions/{id}', [TouristAttractionController::class, 'show'])->name('touristAttractions.show');
-Route::get('/homestays/{id}', [HomestayController::class, 'show'])->name('homestays.show');
+// Route::get('/news/{id}', [NewsController::class, 'show'])->name('news.show');
+// Route::get('/touristAttractions/{id}', [TouristAttractionController::class, 'show'])->name('touristAttractions.show');
+// Route::get('/homestays/{id}', [HomestayController::class, 'show'])->name('homestays.show');
 
 Route::group(['middleware' => ['role:Pelanggan']], function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
